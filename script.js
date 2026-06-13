@@ -1,6 +1,7 @@
 const canvas = document.querySelector("#petals");
 const ctx = canvas.getContext("2d");
 const buttons = document.querySelectorAll(".contact a");
+const orb = document.querySelector(".orb");
 
 let petals = [];
 let pointer = {
@@ -170,3 +171,29 @@ window.addEventListener("resize", () => {
 resizeCanvas();
 createPetals();
 animate();
+
+window.addEventListener("pointermove", (event) => {
+  if (!orb) return;
+
+  const rect = orb.getBoundingClientRect();
+
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const dx = event.clientX - centerX;
+  const dy = event.clientY - centerY;
+
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (distance < 220) {
+    orb.classList.add("active");
+
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+    orb.style.setProperty("--orb-x", `${x}%`);
+    orb.style.setProperty("--orb-y", `${y}%`);
+  } else {
+    orb.classList.remove("active");
+  }
+});
