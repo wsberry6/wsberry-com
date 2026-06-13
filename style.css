@@ -64,6 +64,13 @@ body::after {
   pointer-events: none;
 }
 
+#petals {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .card {
   width: min(100%, 720px);
   min-height: min(620px, calc(100vh - 2rem));
@@ -80,6 +87,7 @@ body::after {
   position: relative;
   display: grid;
   grid-template-rows: 1fr 150px;
+  z-index: 2;
 }
 
 .hero {
@@ -137,11 +145,29 @@ h1 {
   padding: 0.88rem 1.08rem;
   background: rgba(255, 255, 255, 0.045);
   font-size: 0.98rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     transform 0.25s ease,
     background 0.25s ease;
+}
+
+.contact a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba(255, 255, 255, 0.22),
+      transparent 7rem
+    );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: -1;
 }
 
 .contact a:hover,
@@ -151,6 +177,15 @@ h1 {
   box-shadow: 0 0 22px rgba(255, 94, 188, 0.32);
   transform: translateY(-2px);
   outline: none;
+}
+
+.contact a:hover::before,
+.contact a:focus-visible::before {
+  opacity: 1;
+}
+
+.contact a.pressed {
+  transform: scale(0.96);
 }
 
 .sigil {
@@ -214,5 +249,16 @@ h1 {
   .contact {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #petals {
+    display: none;
+  }
+
+  .contact a,
+  .contact a::before {
+    transition: none;
   }
 }
