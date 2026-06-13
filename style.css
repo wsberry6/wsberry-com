@@ -1,212 +1,218 @@
-@import url(‘https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap’);
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap");
 
 :root {
-–bg: #050506;
-–card: rgba(16, 16, 18, 0.78);
-–text: #f5f5f5;
-–muted: #a5a5aa;
-–line: rgba(255, 255, 255, 0.12);
-–pink: #ff4fa3;
-–pink-soft: rgba(255, 79, 163, 0.28);
-–pink-faint: rgba(255, 79, 163, 0.08);
+  --bg: #040407;
+  --card: rgba(14, 14, 22, 0.76);
+  --text: #fff8fb;
+  --muted: #beb7c7;
+  --line: rgba(255, 255, 255, 0.13);
+
+  --pink: #ff5ebc;
+  --violet: #a883ff;
+  --sky: #76d8ff;
+
+  --pink-soft: rgba(255, 94, 188, 0.34);
+  --violet-soft: rgba(168, 131, 255, 0.22);
+  --sky-soft: rgba(118, 216, 255, 0.14);
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+}
 
 body {
-min-height: 100vh;
-font-family: “Inter”, sans-serif;
-color: var(–text);
-background:
-radial-gradient(circle at 70% 20%, var(–pink-soft), transparent 28rem),
-radial-gradient(circle at 20% 80%, var(–pink-faint), transparent 24rem),
-linear-gradient(135deg, #020203, #111113 55%, #050506);
-display: grid;
-place-items: center;
-padding: 1.25rem;
-overflow-x: hidden;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 50% 14%, var(--sky-soft), transparent 18rem),
+    radial-gradient(circle at 82% 22%, var(--pink-soft), transparent 20rem),
+    radial-gradient(circle at 16% 86%, var(--violet-soft), transparent 18rem),
+    linear-gradient(145deg, #020205, #101018 58%, #050507);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow-x: hidden;
 }
 
 body::before {
-content: “”;
-position: fixed;
-inset: 0;
-background-image:
-linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-background-size: 42px 42px;
-mask-image: radial-gradient(circle, black, transparent 72%);
-pointer-events: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle, black, transparent 72%);
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto 0 0;
+  height: 38vh;
+  background:
+    linear-gradient(180deg, transparent, rgba(255, 94, 188, 0.08)),
+    linear-gradient(135deg, transparent 48%, rgba(255,255,255,0.035) 49%, transparent 50%);
+  pointer-events: none;
 }
 
 .card {
-width: min(920px, 100%);
-min-height: 560px;
-border: 1px solid var(–line);
-border-radius: 34px;
-background:
-linear-gradient(145deg, rgba(255,255,255,0.06), transparent 36%),
-var(–card);
-box-shadow:
-0 0 80px rgba(255, 79, 163, 0.16),
-0 30px 100px rgba(0, 0, 0, 0.6);
-backdrop-filter: blur(18px);
-display: grid;
-grid-template-columns: 1.4fr 0.8fr;
-overflow: hidden;
-position: relative;
+  width: min(100%, 720px);
+  min-height: min(620px, calc(100vh - 2rem));
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.075), transparent 38%),
+    var(--card);
+  box-shadow:
+    0 0 90px rgba(255, 94, 188, 0.16),
+    0 32px 110px rgba(0, 0, 0, 0.64);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 150px;
 }
 
 .hero {
-padding: clamp(2rem, 6vw, 5rem);
-display: flex;
-flex-direction: column;
-justify-content: center;
+  padding: clamp(2rem, 9vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
 .orb {
-width: 180px;
-height: 180px;
-border: 1px solid rgba(255, 79, 163, 0.72);
-border-radius: 50%;
-box-shadow:
-0 0 22px rgba(255, 79, 163, 0.9),
-inset 0 0 32px rgba(255, 79, 163, 0.14);
-margin-bottom: 2rem;
+  width: clamp(112px, 34vw, 184px);
+  height: clamp(112px, 34vw, 184px);
+  border: 1px solid rgba(255, 94, 188, 0.78);
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.22), transparent 24%),
+    radial-gradient(circle at 68% 70%, rgba(168, 131, 255, 0.2), transparent 42%);
+  box-shadow:
+    0 0 26px rgba(255, 94, 188, 0.84),
+    0 0 80px rgba(168, 131, 255, 0.18),
+    inset 0 0 34px rgba(255, 94, 188, 0.12);
 }
 
 .kicker {
-color: var(–pink);
-letter-spacing: 0.32em;
-font-size: 0.72rem;
-font-weight: 700;
-margin-bottom: 1rem;
+  color: var(--pink);
+  letter-spacing: 0.34em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
 }
 
 h1 {
-font-size: clamp(3rem, 9vw, 6.8rem);
-line-height: 0.88;
-letter-spacing: -0.075em;
-margin-bottom: 1.4rem;
+  font-size: clamp(3.1rem, 15vw, 7rem);
+  line-height: 0.86;
+  letter-spacing: -0.08em;
+  margin-bottom: 2rem;
+  max-width: 12ch;
 }
 
-.tagline {
-color: var(–text);
-font-size: clamp(1.15rem, 2.6vw, 1.6rem);
-max-width: 36rem;
-margin-bottom: 1rem;
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-start;
 }
 
-.bio {
-color: var(–muted);
-max-width: 34rem;
-line-height: 1.8;
-font-size: 1rem;
-margin-bottom: 2.5rem;
+.contact a {
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.88rem 1.08rem;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 0.98rem;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
-.links {
-display: flex;
-flex-wrap: wrap;
-gap: 0.8rem;
-}
-
-.links a {
-color: var(–text);
-text-decoration: none;
-border: 1px solid var(–line);
-border-radius: 999px;
-padding: 0.78rem 1rem;
-background: rgba(255,255,255,0.035);
-transition: 0.25s ease;
-}
-
-.links a:hover {
-border-color: var(–pink);
-box-shadow: 0 0 18px rgba(255, 79, 163, 0.32);
-transform: translateY(-2px);
+.contact a:hover,
+.contact a:focus-visible {
+  border-color: var(--pink);
+  background: rgba(255, 94, 188, 0.08);
+  box-shadow: 0 0 22px rgba(255, 94, 188, 0.32);
+  transform: translateY(-2px);
+  outline: none;
 }
 
 .sigil {
-border-left: 1px solid var(–line);
-position: relative;
-background:
-radial-gradient(circle at 65% 70%, rgba(255, 79, 163, 0.22), transparent 14rem),
-linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
-display: grid;
-place-items: center;
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 72% 42%, rgba(255, 94, 188, 0.22), transparent 11rem),
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+  display: grid;
+  place-items: center;
+  position: relative;
 }
 
 .moon {
-width: 74px;
-height: 74px;
-border-radius: 50%;
-box-shadow: -18px 0 0 var(–pink);
-opacity: 0.9;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow: -16px 0 0 var(--pink);
+  opacity: 0.9;
 }
 
 .line {
-position: absolute;
-height: 72%;
-width: 1px;
-background: linear-gradient(transparent, var(–pink), transparent);
-opacity: 0.35;
+  position: absolute;
+  height: 1px;
+  width: 72%;
+  background: linear-gradient(90deg, transparent, var(--pink), var(--violet), transparent);
+  opacity: 0.42;
 }
 
 .spark {
-position: absolute;
-bottom: 3rem;
-right: 3rem;
-color: var(–pink);
-font-size: 2rem;
-text-shadow: 0 0 18px rgba(255, 79, 163, 0.9);
+  position: absolute;
+  right: 2rem;
+  bottom: 1.6rem;
+  color: var(--pink);
+  font-size: 1.8rem;
+  text-shadow: 0 0 18px rgba(255, 94, 188, 0.92);
 }
 
-@media (max-width: 760px) {
-body {
-place-items: start center;
-}
+@media (min-width: 760px) {
+  body {
+    padding: 1.5rem;
+  }
 
-.card {
-grid-template-columns: 1fr;
-min-height: auto;
-border-radius: 28px;
-}
+  .card {
+    width: min(940px, 100%);
+    min-height: 560px;
+    grid-template-columns: 1.35fr 0.75fr;
+    grid-template-rows: 1fr;
+  }
 
-.hero {
-padding: 2rem;
-}
+  .sigil {
+    border-top: none;
+    border-left: 1px solid var(--line);
+  }
 
-.orb {
-width: 128px;
-height: 128px;
-}
+  .line {
+    width: 1px;
+    height: 72%;
+    background: linear-gradient(transparent, var(--pink), var(--violet), transparent);
+  }
 
-.sigil {
-min-height: 170px;
-border-left: none;
-border-top: 1px solid var(–line);
-}
-
-.line {
-height: 1px;
-width: 72%;
-}
-
-.spark {
-bottom: 2rem;
-right: 2rem;
-}
-
-.links {
-flex-direction: column;
-}
-
-.links a {
-text-align: center;
-}
+  .contact {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
