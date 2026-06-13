@@ -100,18 +100,57 @@ body::after {
 }
 
 .orb {
-  width: clamp(112px, 34vw, 184px);
-  height: clamp(112px, 34vw, 184px);
-  border: 1px solid rgba(255, 94, 188, 0.78);
+  width: clamp(132px, 36vw, 196px);
+  height: clamp(132px, 36vw, 196px);
+
   border-radius: 50%;
+  overflow: hidden;
+
   margin-bottom: 2rem;
+
+  border: 1px solid rgba(255, 94, 188, 0.9);
+
   background:
     radial-gradient(circle at 34% 28%, rgba(255,255,255,0.22), transparent 24%),
     radial-gradient(circle at 68% 70%, rgba(168, 131, 255, 0.2), transparent 42%);
+
   box-shadow:
     0 0 26px rgba(255, 94, 188, 0.84),
     0 0 80px rgba(168, 131, 255, 0.18),
     inset 0 0 34px rgba(255, 94, 188, 0.12);
+
+  position: relative;
+}
+
+.portrait-orb {
+  display: grid;
+  place-items: center;
+}
+
+.portrait-orb img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+  border-radius: 50%;
+
+  transform: scale(1.02);
+
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
+
+  filter:
+    saturate(1.05)
+    contrast(1.04)
+    brightness(1.02);
+}
+
+.portrait-orb:hover img {
+  transform: scale(1.05);
 }
 
 .kicker {
