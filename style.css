@@ -310,7 +310,7 @@ body::after {
   box-shadow: -30px 0 0 var(--pink);
   position: absolute;
   top: 50%;
-  left: 42%;
+  left: 66%;
   transform: translate(-50%, -50%);
   opacity: 0.92;
 }
